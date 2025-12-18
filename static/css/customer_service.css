@@ -1,0 +1,107 @@
+.back-home {
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid #fff;
+  padding: 5px 12px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.back-home:hover {
+  background: #fff;
+  color: #8B575C;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  color: black;
+  line-height: 1.6;
+}
+
+.cs-header {
+  background: #8B575C;
+  color: #fff;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.cs-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.cs-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.cs-section {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.cs-section h2 {
+  color: #8B575C;
+  margin-bottom: 10px;
+}
+
+.cs-section p, 
+.cs-section li {
+  font-size: 15px;
+}
+
+.cs-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cs-section ul li {
+  margin-bottom: 10px;
+}
+
+.cs-footer {
+  background: #8B575C;
+  color: #f4f4f4;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+.cs-section a {
+  color: #222;       
+  text-decoration: none; /* underline hata dega */
+  font-weight: 500;
+}
+
+.cs-section a:hover {
+  /* color: #5a383c;        hover pe thoda dark color */
+  text-decoration: none; /* optional: hover pe underline show */
+}
+.animated-text {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f4f4f4;
+  border-right: 2px solid #8B575C;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 350px; }   /* 👈 Yaha fixed width dena zaroori hai */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}

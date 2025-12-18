@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Wishlist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sarees.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/wishlist.css') }}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <section id="wishlist-collection">
+    <div class="wishlist-header">
+  <h2><i class="fa-regular fa-heart"></i>My Wishlist</h2>
+  <!-- <p>All your favorite sarees saved in one place</p> -->
+</div>
+
+    <div class="product-container" id="wishlist-container">
+      <!-- Wishlist products dynamically load honge -->
+    </div>
+  </section>
+<script>
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const container = document.getElementById("wishlist-container");
+
+  function renderWishlist() {
+    container.innerHTML = "";
+
+    if (wishlist.length === 0) {
+      container.innerHTML = "<p>Your wishlist is empty.</p>";
+      return;
+    }
+
+    wishlist.forEach((item) => {
+      let stars = "";
+      for (let i = 0; i < item.rating; i++) stars += `<i class="fas fa-star"></i>`;
+      for (let i = item.rating; i < 5; i++) stars += `<i class="far fa-star"></i>`;
+
+      container.innerHTML += `
+        <div class="pro">
+          <a href="${item.link}">
+            <div class="img-box">
+              <img src="${item.image1}" class="img-front">
+              <img src="${item.image2}" class="img-back">
+            </div>
+          </a>
+
+          <div class="des">
+            <span>${item.brand}</span>
+            <h5>${item.name}</h5>
+            <div class="star">${stars}</div>
+            <h4>₹${item.price}</h4>
+          </div>
+
+          <div class="product-icons">
+            <a href="javascript:void(0)" class="wishlist-icon active"
+               data-id="${item.id}">
+              <i class="fa-solid fa-heart"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    });
+
+    document.querySelectorAll(".wishlist-icon").forEach(icon => {
+      icon.addEventListener("click", function () {
+        let id = String(this.dataset.id);
+
+        wishlist = wishlist.filter(p => String(p.id) !== id);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+        // ⭐ CUSTOM EVENT (same tab sync)
+        // window.dispatchEvent(new CustomEvent("wishlistUpdated"));
+
+        renderWishlist();
+      });
+    });
+  }
+
+  renderWishlist();
+</script>
+<script>
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let count = 0;
+
+  cart.forEach(item => {
+    count += item.quantity;   // ✅ quantity based count
+  });
+
+  let badge = document.getElementById("cart-count");
+
+  if (!badge) return;
+
+  if (count > 0) {
+    badge.style.display = "inline-block";
+    badge.innerText = count;
+  } else {
+    badge.style.display = "none";
+  }
+}
+
+// page load
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+// same tab update
+window.addEventListener("cartUpdated", updateCartCount);
+
+// cross tab update
+window.addEventListener("storage", updateCartCount);
+</script>
+
+
+
+</body>
+</html>

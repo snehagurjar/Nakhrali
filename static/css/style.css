@@ -1,0 +1,84 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8f0;
+  color: #333;
+}
+
+.collection-hero {
+  text-align: center;
+  background: #ffc0cb;
+  padding: 40px;
+  color: #6a040f;
+}
+
+.collection-hero h1 {
+  font-size: 2.5rem;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.product-card {
+  background: #ffffff;
+  border: 1px solid #fcd5ce;
+  border-radius: 12px;
+  width: 260px;
+  text-align: center;
+  padding: 15px;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  color: #6a040f;
+  margin: 10px 0 5px;
+}
+
+.price {
+  color: #9d0208;
+  font-weight: bold;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #777;
+  margin-right: 5px;
+}
+
+.product-card button {
+  background: #f77f00;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}

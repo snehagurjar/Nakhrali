@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nakhrali - Login or Register</title>
+<style>
+    body {
+    background: linear-gradient(to right, #a43470, #b39b98);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    }
+    .box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+    }
+    .box h2 {
+    color: #a43470;
+    margin-bottom: 30px;
+    }
+    .box a {
+    display: block;
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 25px;
+    background-color: rgb(87, 9, 9);
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s;
+    }
+    .box a:hover {
+    background-color: #a43470;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+    <h2>Select an Option</h2>
+    <a href="{{ url_for('register') }}">Register</a>
+
+    <a href="{{ url_for('login') }}">Login</a>
+
+
+
+</div>
+</body>
+</html>

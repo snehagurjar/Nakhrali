@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nakhrali Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylehome.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/customer_service.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sarees.css') }}">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+  <!--  Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <span class="brand-name">Nakhrali</span>
+    </div>
+
+
+
+
+    <!-- 🔹 Search Bar -->
+    <!-- 🔹 Search Bar -->
+<div class="navbar-center">
+  <form action="/search" method="get" class="search-wrapper">
+    
+    <i class="bi bi-search search-icon"></i>
+    
+    <input 
+      type="text"
+      name="q"
+      placeholder="Search for products..."
+      class="search-box"
+      required
+    />
+    
+  </form>
+</div>
+
+
+    
+    <!-- Icons -->
+
+    <div class="navbar-right">
+  <div class="icon-container" data-tooltip="Wishlist">
+<a href="{{ url_for('wishlist_page') }}">
+    <i class="bi bi-heart-fill nav-icon"></i>
+  </a>  </div>
+  <div class="icon-container" data-tooltip="Cart">
+    <a href="{{ url_for('cart_page') }}" class="cart-nav">
+  <i class="bi bi-bag-heart-fill nav-icon"></i>
+  <span class="cart-count" id="cart-count">0</span>
+</a>
+
+  </div>
+  <div class="icon-container" data-tooltip="Profile">
+    <a href="{{ url_for('profile') }}" title="Your Profile">
+  <i class="bi bi-person-circle nav-icon"></i>
+</a>
+  </div>
+  <div class="icon-container" data-tooltip="Store Location">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=23.280151049424514,77.47162855364061" 
+      target="_blank">
+      <i class="bi bi-shop nav-icon"></i>
+    </a>
+  </div>
+</div>
+</header>
+
+<!-- 🔹 Category Bar -->
+<header>
+<div class="category-bar">
+    <div class="category-container">
+      <!-- Left Side (Categories) -->
+      <ul class="categories">
+  <li class="dropdown">
+  <a href="#">NEW ARRIVALS</a>
+  <div class="dropdown-menu">
+    
+    <!-- Left side: list -->
+    <ul class="menu-list">
+      <li><a href="#">Sarees</a></li>
+      <li><a href="#">Suit Sets</a></li>
+      <li><a href="#">Dresses</a></li>
+      <li><a href="#">Lehengas</a></li>
+      <li><a href="#">Co-ord Sets</a></li>
+      <li><a href="#">Dress Material</a></li>
+    </ul>
+
+    <!-- Right side: image -->
+    <div class="menu-image">
+  <img src="{{ url_for('static', filename='images/navratri.jpg') }}" alt="Preview">
+</div>
+
+
+  </div>
+</li>
+
+<li class="dropdown">
+  <a href="{{ url_for('sarees') }}">SAREES</a>
+    <div class="dropdown-menu">
+    
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+      <h6>By Fabric</h6>
+      <li><a href="#">Cotton Sarees</a></li>
+      <li><a href="#">Silk Sarees</a></li>
+      <li><a href="#">Chiffon Sarees</a></li>
+      <li><a href="#">Georgette Sarees</a></li>
+      <li><a href="#">Linen Sarees</a></li>
+      <li><a href="#">Organza Sarees</a></li>
+    </ul>
+
+    <!-- Column 2: By Occasion -->
+    <ul class="menu-list">
+      <h6>By Occasion</h6>
+      <li><a href="#">Casual Sarees</a></li>
+      <li><a href="#">Office Wear Sarees</a></li>
+      <li><a href="#">Festive Sarees</a></li>
+      <li><a href="#">Wedding Sarees</a></li>
+      <li><a href="#">Party Sarees</a></li>
+    </ul>
+
+    <!-- Column 3: By Work -->
+    <ul class="menu-list">
+      <h6>By Work</h6>
+      <li><a href="#">Zari Sarees</a></li>
+      <li><a href="#">Sequin Sarees</a></li>
+      <li><a href="#">Thread Work Sarees</a></li>
+      <li><a href="#">Stone Work Sarees</a></li>
+      <li><a href="#">Hand-painted Sarees</a></li>
+    </ul>
+
+    <!-- Column 4: By Region -->
+    <ul class="menu-list">
+      <h6>By Region</h6>
+      <li><a href="#">Banarasi Sarees</a></li>
+      <li><a href="#">Kanjivaram Sarees</a></li>
+      <li><a href="#">Paithani Sarees</a></li>
+      <li><a href="#">Bandhani Sarees</a></li>
+      <li><a href="#">Patola Sarees</a></li>
+      <li><a href="#">Chikankari Sarees</a></li>
+    </ul>
+    <!-- <div class="menu-image">
+      <img src="static/images/saree.jpg" alt="Saree Collection">
+    </div> -->
+
+  </div>
+  
+</li>
+  <li class="dropdown">
+  <a href="{{ url_for('suits') }}">SUIT SETS</a>
+
+  <div class="dropdown-menu">
+    
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+      <h4>By Fabric</h4>
+      <li><a href="#">Cotton Suit Sets</a></li>
+      <li><a href="#">Silk Suit Sets</a></li>
+      <li><a href="#">Chanderi Suit Sets</a></li>
+      <li><a href="#">Georgette Suit Sets</a></li>
+      <li><a href="#">Linen Suit Sets</a></li>
+      <li><a href="#">Velvet Suit Sets</a></li>
+    </ul>
+
+    <!-- Column 2: By Occasion -->
+    <ul class="menu-list">
+      <h4>By Occasion</h4>
+      <li><a href="#">Casual Suit Sets</a></li>
+      <li><a href="#">Office Wear Suit Sets</a></li>
+      <li><a href="#">Festive Suit Sets</a></li>
+      <li><a href="#">Wedding Suit Sets</a></li>
+      <li><a href="#">Party Wear Suit Sets</a></li>
+    </ul>
+
+    <!-- Column 3: By Style -->
+    <ul class="menu-list">
+      <h4>By Style</h4>
+      <li><a href="#">Anarkali Suit Sets</a></li>
+      <li><a href="#">Straight Cut Suit Sets</a></li>
+      <li><a href="#">A-Line Suit Sets</a></li>
+      <li><a href="#">Palazzo Suit Sets</a></li>
+      <li><a href="#">Sharara Suit Sets</a></li>
+      <li><a href="#">Angrakha Suit Sets</a></li>
+    </ul>
+
+    <!-- Column 4: By Work -->
+    <ul class="menu-list">
+      <h4>By Work</h4>
+      <li><a href="#">Printed Suit Sets</a></li>
+      <li><a href="#">Embroidered Suit Sets</a></li>
+      <li><a href="#">Zari Work Suit Sets</a></li>
+      <li><a href="#">Mirror Work Suit Sets</a></li>
+      <li><a href="#">Gota Patti Suit Sets</a></li>
+      <li><a href="#">Hand-painted Suit Sets</a></li>
+    </ul>
+
+
+  </div>
+</li>
+
+<li class="dropdown">
+  <a href="#">DRESSES</a>
+  <div class="dropdown-menu">
+
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+      <h4>By Fabric</h4>
+      <li><a href="#">Cotton Dresses</a></li>
+      <li><a href="#">Linen Dresses</a></li>
+      <li><a href="#">Satin Dresses</a></li>
+      <li><a href="#">Georgette Dresses</a></li>
+      <li><a href="#">Chiffon Dresses</a></li>
+      <li><a href="#">Velvet Dresses</a></li>
+    </ul>
+
+    <!-- Column 2: By Trend -->
+    <ul class="menu-list">
+      <h4>By Trend</h4>
+      <li><a href="#">Printed Dresses</a></li>
+      <li><a href="#">Solid Dresses</a></li>
+      <li><a href="#">Floral Dresses</a></li>
+      <li><a href="#">Ruffled Dresses</a></li>
+      <li><a href="#">Off-shoulder Dresses</a></li>
+      <li><a href="#">Shirt Dresses</a></li>
+    </ul>
+
+    <!-- Right Side Image -->
+    <div class="menu-image">
+  <img src="{{ url_for('static', filename='images/cottondress.jpg') }}" alt="Preview">
+    </div>
+
+  </div>
+</li>
+<li class="dropdown">
+  <a href="#">CO-ORD SETS</a>
+  <div class="dropdown-menu">
+
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+      <h4>By Fabric</h4>
+      <li><a href="#">Cotton Co-ord Sets</a></li>
+      <li><a href="#">Linen Co-ord Sets</a></li>
+      <li><a href="#">Satin Co-ord Sets</a></li>
+      <li><a href="#">Georgette Co-ord Sets</a></li>
+      <li><a href="#">Velvet Co-ord Sets</a></li>
+    </ul>
+
+    <!-- Column 2: By Style -->
+    <ul class="menu-list">
+      <h4>By Style</h4>
+      <li><a href="#">Printed Co-ord Sets</a></li>
+      <li><a href="#">Solid Co-ord Sets</a></li>
+      <li><a href="#">Crop Top Co-ord Sets</a></li>
+      <li><a href="#">Blazer Co-ord Sets</a></li>
+      <li><a href="#">Skirt Co-ord Sets</a></li>
+      <li><a href="#">Palazzo Co-ord Sets</a></li>
+    </ul>
+
+    <!-- Right side: Image -->
+    <div class="menu-image">
+  <img src="{{ url_for('static', filename='images/coordsets.jpg') }}" alt="Preview">
+    </div>
+
+  </div>
+</li>
+<li class="dropdown">
+  <a href="#">LEHENGAS</a>
+  <div class="dropdown-menu">
+
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+  <h4>By Fabric</h4>
+  <li><a href="#">Cotton Lehengas</a></li>
+  <li><a href="#">Silk Lehengas</a></li>
+  <li><a href="#">Velvet Lehengas</a></li>
+  <li><a href="#">Georgette Lehengas</a></li>
+  <li><a href="#">Net Lehengas</a></li>
+  <li><a href="#">Brocade Lehengas</a></li>
+  <li><a href="#">Chiffon Lehengas</a></li>
+  <li><a href="#">Organza Lehengas</a></li>
+  <li><a href="#">Crepe Lehengas</a></li>
+  <li><a href="#">Satin Lehengas</a></li>
+  <li><a href="#">Raw Silk Lehengas</a></li>
+  <li><a href="#">Banarasi Lehengas</a></li>
+  <li><a href="#">Tissue Lehengas</a></li>
+</ul>
+
+
+
+    <!-- Right side: Image -->
+    <div class="menu-image">
+  <img src="{{ url_for('static', filename='images/lehanga.jpg') }}" alt="Preview"
+    </div>
+
+  </div>
+</li>
+<li class="dropdown">
+  <a href="#">DRESS MATERIAL</a>
+  <div class="dropdown-menu">
+    
+    <!-- Column 1: By Fabric -->
+    <ul class="menu-list">
+      <h4>By Fabric</h4>
+      <li><a href="#">Cotton Dress Material</a></li>
+      <li><a href="#">Silk Dress Material</a></li>
+      <li><a href="#">Georgette Dress Material</a></li>
+      <li><a href="#">Chiffon Dress Material</a></li>
+      <li><a href="#">Linen Dress Material</a></li>
+      <li><a href="#">Velvet Dress Material</a></li>
+    </ul>
+
+    <!-- Column 2: By Print (Cotton) -->
+    <ul class="menu-list">
+      <h4>By Print (Cotton)</h4>
+      <li><a href="#">Floral Print Dress Material</a></li>
+      <li><a href="#">Block Print Dress Material</a></li>
+      <li><a href="#">Ajrakh Print Dress Material</a></li>
+      <li><a href="#">Bandhani Print Dress Material</a></li>
+      <li><a href="#">Ikat Print Dress Material</a></li>
+      <li><a href="#">Kalamkari Print Dress Material</a></li>
+      <li><a href="#">Dabu Print Dress Material</a></li>
+      <li><a href="#">Batik Print Dress Material</a></li>
+      <li><a href="#">Polka Dot Dress Material</a></li>
+      <li><a href="#">Striped Cotton Dress Material</a></li>
+      <li><a href="#">Checked Cotton Dress Material</a></li>
+      <li><a href="#">Abstract Print Dress Material</a></li>
+    </ul>
+
+    <!-- Column 3: By Work -->
+    <ul class="menu-list">
+      <h4>By Work</h4>
+      <li><a href="#">Embroidered Dress Material</a></li>
+      <li><a href="#">Zari Work Dress Material</a></li>
+      <li><a href="#">Thread Work Dress Material</a></li>
+      <li><a href="#">Mirror Work Dress Material</a></li>
+      <li><a href="#">Sequin Work Dress Material</a></li>
+      <li><a href="#">Hand-painted Dress Material</a></li>
+    </ul>
+
+    <!-- Right side image -->
+    <!-- <div class="menu-image">
+      <img src="static/images/dressmaterial.jpg" alt="Dress Material Collection">
+    </div> -->
+
+  </div>
+</li>
+<li class="dropdown">
+  <a href="#">JEWELLERY</a>
+  <div class="dropdown-menu">
+
+    <!-- Column 1 -->
+    <ul class="menu-list">
+      <h4>By Type</h4>
+      <li><a href="#">Necklaces</a></li>
+      <li><a href="#">Earrings</a></li>
+      <li><a href="#">Bangles & Bracelets</a></li>
+      <li><a href="#">Rings</a></li>
+      <li><a href="#">Anklets</a></li>
+      <li><a href="#">Maang Tikka</a></li>
+      <li><a href="#">Nose Pins</a></li>
+      <li><a href="#">Toe Rings</a></li>
+    </ul>
+
+    <!-- Column 2 -->
+    <ul class="menu-list">
+      <h4>&nbsp;</h4> <!-- Empty heading for alignment -->
+      <li><a href="#">Waist Belts (Kamarbandh)</a></li>
+      <li><a href="#">Hair Accessories</a></li>
+      <li><a href="#">Armlets (Bajubandh)</a></li>
+      <li><a href="#">Pendant Sets</a></li>
+      <li><a href="#">Chokers</a></li>
+      <li><a href="#">Long Haar</a></li>
+      <li><a href="#">Bridal Sets</a></li>
+    </ul>
+
+    <!-- Right side image -->
+    <div class="menu-image">
+  <img src="{{ url_for('static', filename='images/jwellery.jpg') }}" alt="Preview">
+    </div>
+
+  </div>
+</li>
+<li class="dropdown-offers">
+  <a href="#">OFFERS</a>
+  <div class="dropdown-menu offers-menu">
+    <ul class="menu-list">
+      <!-- <h4>By Discount</h4> -->
+      <li><a href="#">Flat 10% Off</a></li>
+      <li><a href="#">Flat 20% Off</a></li>
+      <li><a href="#">Flat 30% Off</a></li>
+      <li><a href="#">Flat 40% Off</a></li>
+      <li><a href="#">50% Off & Above</a></li>
+    </ul>
+  </div>
+</li>
+
+</ul>
+
+
+      <!-- Right Side (Customer Care) -->
+      <div class="customer-care">
+        
+<a href="{{ url_for('customer_service') }}"><i class="bi bi-headset"></i> Customer Service</a>      </div>
+    </div>
+  
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <section id="saree-collection">
+    <h2>Saree Collection</h2>
+
+    <div class="product-container">
+      {% for p in products %}
+      <div class="pro">
+      <a href="{{ url_for('saree_detail', product_id=p.id) }}">
+      <div class="img-box">
+        <img src="{{ url_for('static', filename=p.image1) }}" alt="{{ p.name }}" class="img-front">
+        <img src="{{ url_for('static', filename=p.image2) }}" alt="{{ p.name }}" class="img-back">
+      </div>
+
+      </a>
+
+        <div class="des">
+          <span>{{ p.brand }}</span>
+          <h5>{{ p.name }}</h5>
+
+          <div class="star">
+            {% for _ in range(p.rating) %}
+              <i class="fas fa-star"></i>
+            {% endfor %}
+            {% for _ in range(5 - p.rating) %}
+              <i class="far fa-star"></i>
+            {% endfor %}
+          </div>
+
+          <h4>₹{{ p.price }}</h4>
+        </div>
+      
+
+        
+      <div class="product-icons">
+  <!-- Wishlist Icon -->
+    <a href="javascript:void(0)" 
+   class="wishlist-icon" 
+   data-id="{{ p.id }}" 
+   data-name="{{ p.name }}" 
+   data-brand="{{ p.brand }}" 
+   data-price="{{ p.price }}" 
+   data-image1="{{ url_for('static', filename=p.image1) }}" 
+   data-image2="{{ url_for('static', filename=p.image2) }}" 
+   data-link="{{ url_for('saree_detail', product_id=p.id) }}"
+   data-rating="{{ p.rating }}"
+   title="Add to Wishlist">
+  <i class="fa-regular fa-heart"></i>
+</a>
+
+  <!-- Cart Icon -->
+  <a href="javascript:void(0)"
+  class="cart-icon"
+  data-id="{{ p.id }}"
+  data-name="{{ p.name }}"
+  data-price="{{ p.price }}"
+  data-image="{{ url_for('static', filename=p.image1) }}">
+  <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+</div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+<script>
+function getWishlist() {
+    return JSON.parse(localStorage.getItem("wishlist")) || [];
+}
+
+function saveWishlist(wishlist) {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+
+function toggleWishlistByIcon(icon) {
+    let wishlist = getWishlist();
+    let id = String(icon.dataset.id);
+
+    let index = wishlist.findIndex(p => String(p.id) === id);
+
+    if (index === -1) {
+        // add
+        wishlist.push({
+            id: id,
+            name: icon.dataset.name,
+            price: icon.dataset.price,
+            brand: icon.dataset.brand,
+            image1: icon.dataset.image1,
+            image2: icon.dataset.image2,
+            link: icon.dataset.link,
+            rating: icon.dataset.rating
+        });
+        icon.classList.add("active");
+        icon.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+    } else {
+        // remove
+        wishlist = wishlist.filter(p => String(p.id) !== id);
+        icon.classList.remove("active");
+        icon.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+    }
+
+    saveWishlist(wishlist);
+}
+
+// page load pe sync
+document.addEventListener("DOMContentLoaded", () => {
+    let wishlist = getWishlist();
+
+    document.querySelectorAll(".wishlist-icon").forEach(icon => {
+        let id = String(icon.dataset.id);
+        if (wishlist.find(p => String(p.id) === id)) {
+            icon.classList.add("active");
+            icon.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+        }
+    });
+});
+
+// click handling
+document.querySelectorAll(".wishlist-icon").forEach(icon => {
+    icon.addEventListener("click", function () {
+        toggleWishlistByIcon(this);
+    });
+});
+</script>
+
+
+<script>
+window.addEventListener("wishlistUpdated", () => {
+    let wishlist = getWishlist();
+
+    document.querySelectorAll(".wishlist-icon").forEach(icon => {
+        let id = String(icon.dataset.id);
+
+        if (wishlist.find(p => String(p.id) === id)) {
+            icon.classList.add("active");
+            icon.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+        } else {
+            icon.classList.remove("active");
+            icon.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+        }
+    });
+});
+window.addEventListener("storage", function () {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  document.querySelectorAll(".wishlist-icon").forEach(icon => {
+    let id = String(icon.dataset.id);
+
+    if (wishlist.find(p => String(p.id) === id)) {
+      icon.classList.add("active");
+      icon.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+    } else {
+      icon.classList.remove("active");
+      icon.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+    }
+  });
+});
+
+</script>
+
+
+
+
+<section class="about-nakhrali">
+  <div class="about-container">
+    <h3>NAKHRALI – CELEBRATING THE GRACE OF INDIAN WOMEN</h3>
+    <p>
+      Nakhrali is more than just a fashion label – it’s a celebration of tradition, elegance, 
+      and confidence. With a unique blend of ethnic craftsmanship and modern styles, 
+      Nakhrali brings you outfits that resonate with your personality. 
+      From festive wear to everyday elegance, every piece is designed to make 
+      you feel empowered and beautiful. 
+    </p>
+    <p>
+      Our collections highlight vibrant colors, intricate designs, and the richness 
+      of Indian culture. Nakhrali believes fashion is not just about clothing, 
+      but about expressing who you truly are.
+    </p>
+  </div>
+</section>
+
+
+<section class="footer-social">
+  <span>Follow us on:</span>
+  
+  <a href="https://wa.me/917354084124" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <a href="https://instagram.com/nakhrali_._collection" target="_blank"><i class="fab fa-instagram"></i></a>
+  </section>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* toggle cart */
+function toggleCart(icon) {
+  let cart = getCart();
+  let id = String(icon.dataset.id);
+
+  let index = cart.findIndex(p => String(p.id) === id);
+
+  if (index === -1) {
+    // ADD
+    cart.push({
+      id: id,
+      name: icon.dataset.name,
+      price: Number(icon.dataset.price),
+      image: icon.dataset.image,
+      quantity: 1
+    });
+    icon.classList.add("active");
+  } else {
+    // REMOVE
+    cart = cart.filter(p => String(p.id) !== id);
+    icon.classList.remove("active");
+  }
+
+  saveCart(cart);
+  window.dispatchEvent(new Event("cartUpdated"));
+  // alert("Added to cart 🛒");
+}
+
+/* page load sync */
+function syncCartIcons() {
+  let cart = getCart();
+
+  document.querySelectorAll(".cart-icon").forEach(icon => {
+    let id = String(icon.dataset.id);
+    if (cart.find(p => String(p.id) === id)) {
+      icon.classList.add("active");
+    } else {
+      icon.classList.remove("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  syncCartIcons();
+
+  document.querySelectorAll(".cart-icon").forEach(icon => {
+    icon.addEventListener("click", () => toggleCart(icon));
+  });
+});
+</script>
+
+<script>
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let count = 0;
+
+  cart.forEach(item => {
+    count += item.quantity;   // ✅ quantity based count
+  });
+
+  let badge = document.getElementById("cart-count");
+
+  if (!badge) return;
+
+  if (count > 0) {
+    badge.style.display = "inline-block";
+    badge.innerText = count;
+  } else {
+    badge.style.display = "none";
+  }
+}
+
+// page load
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+// same tab update
+window.addEventListener("cartUpdated", updateCartCount);
+
+// cross tab update
+window.addEventListener("storage", updateCartCount);
+</script>
+
+</body>
+</html>

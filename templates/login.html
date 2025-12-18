@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Nakhrali</title>
+<style>
+    body {
+    background: linear-gradient(to right, #ffc0cb, #ffe4e1);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .form-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 350px;
+    }
+
+    .form-box h2 {
+    margin-bottom: 25px;
+    color: rgb(87, 9, 9);
+    text-align: center;
+    }
+
+    .form-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+
+    .form-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(87, 9, 9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    }
+
+    .form-box button:hover {
+    background-color: #a43470;
+    }
+
+    .form-box .link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    }
+
+    .form-box .link a {
+    color: rgb(87, 9, 9);
+    text-decoration: none;
+    }
+
+    .form-box .link a:hover {
+    text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<div class="form-box">
+    <h2>Login</h2>
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li style="color: {% if category == 'success' %}green{% else %}red{% endif %};">
+            {{ message }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login') }}" method="POST">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+    <div class="link">
+        Don't have an account? <a href="{{ url_for('register') }}">Register</a>  <!-- ✅ Sahi -->
+
+
+
+    </div>
+    </form>
+</div>
+</body>
+</html>

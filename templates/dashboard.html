@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Dashboard</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffe4e1, #ffc0cb);
+    padding: 40px;
+    }
+
+    h2 {
+    text-align: center;
+    color: #a52a2a;
+    }
+
+    table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    }
+
+    th {
+    background-color: #a52a2a;
+    color: white;
+    }
+
+    tr:nth-child(even) {
+    background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+<h2>Registered Users Dashboard</h2>
+<table>
+    <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Location</th>
+    <th>Registered At</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.phone }}</td>
+    <td>{{ user.location }}</td>
+    <td>{{ user.created_at }}</td>
+</tr>
+
+    {% endfor %}
+</table>
+</body>
+</html>

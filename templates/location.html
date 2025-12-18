@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nakhrali Store Directions</title>
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    let map, directionsService, directionsRenderer;
+
+    function initMap() {
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer();
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 7,
+        center: { lat: 23.2599, lng: 77.4126 }  // Default: Bhopal center
+      });
+
+      directionsRenderer.setMap(map);
+
+      // Get user's current location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            const storeLocation = {
+              lat: 23.2445,  // 🏪 Your store latitude
+              lng: 77.4832   // 🏪 Your store longitude
+            };
+
+            const request = {
+              origin: userLocation,
+              destination: storeLocation,
+              travelMode: 'DRIVING'
+            };
+
+            directionsService.route(request, (result, status) => {
+              if (status === 'OK') {
+                directionsRenderer.setDirections(result);
+              } else {
+                alert('Could not display directions due to: ' + status);
+              }
+            });
+          },
+          () => {
+            alert('Geolocation permission denied.');
+          }
+        );
+      } else {
+        alert('Geolocation not supported by this browser.');
+      }
+    }
+  </script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5iUXienJ5jHtMSnErM7L1Eg3IbTZAHmg&callback=initMap">
+  </script>
+</body>
+</html>

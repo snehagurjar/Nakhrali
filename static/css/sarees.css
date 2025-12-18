@@ -1,0 +1,823 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
+
+
+/* 🔷 Scrolling Text Animation with More Gap */
+.scrolling-text {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.scroll-content {
+  display: inline-block;
+  font-size: 19px;
+  color: #F4F4F4;
+  letter-spacing: 0.5px;
+  animation: scroll-text 20s linear infinite;
+}
+
+.scroll-content span {
+  display: inline-block;
+  margin-right: 100px;  /* 👉 yaha gap control hoga */
+}
+
+/* Continuous smooth scroll */
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F4F4F4;
+  /* F6E4F6 */
+  font-family: 'Playfair Display', serif;
+}
+
+/* 🔷 Tagline Header */
+.nakhrali-simple-header {
+  background-color: #8B575C;
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 2px solid #8B575C;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.nakhrali-simple-header p {
+  margin: 0;
+  font-size: 19px;
+  color: #F4F4F4;
+  letter-spacing: 0.5px;
+}
+
+/* 🔷 Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #F4F4F4;
+  /* #ffeef4 */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔷 Brand Section (Logo + Name) */
+/* .navbar-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+} */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between logo and text */
+  margin-left: 40px;
+}
+
+
+
+.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.brand-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  color: #C98986;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 5px; 
+}
+
+/* 🔷 Center Search */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  padding: 4px 12px;
+  max-width: 360px;
+  width: 100%;
+  position: relative;
+}
+
+.search-box {
+  border: none;
+  outline: none;
+  font-size: 13px;
+  width: 100%;
+  background: transparent;
+  padding-right: 24px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 16px;
+  color: #C98986;
+  cursor: pointer;
+}
+
+/* 🔷 Right Icons */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-right: 40px;
+  gap: 24px;
+
+}
+
+.navbar-right a {
+  text-decoration: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.nav-icon {
+  font-size: 22px;
+  color: #C98986;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+  vertical-align: middle;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2);
+  color: #8B575C;
+}
+.icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/* Only show plain text label on hover */
+.icon-container::after {
+  content: attr(data-tooltip);
+  font-size: 12px;
+  color: #8B575C;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 24px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.icon-container:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+/*2ND HEADER CHANGES*/
+
+/* Category Bar */
+.category-bar {
+  background-color: #8B575C;
+  padding: 3px 0;
+}
+
+/* Container for flex */
+.category-container {
+  display: flex;
+  justify-content: space-between; /* Categories left, Customer Care right */
+  align-items: center;
+  max-width: 1400px; /* thoda aur wide kiya */
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Categories Left */
+.categories {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li a {
+  color: #F4F4F4;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.categories li a:hover {
+  color: #FFD1DC;
+}
+
+/* Customer Care Right */
+.customer-care {
+  margin-left: auto; /* forcefully rightmost */
+  color: #F4F4F4;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap; /* ek hi line me */
+  padding: 6px 12px;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+/* .customer-care i {
+  font-size: 18px;
+  color: #FFD1DC;
+}
+
+.customer-care:hover {
+  background-color:transparent;
+  color: white;
+} */
+.customer-care a {
+  text-decoration: none;
+
+  font-size: 15px;
+  color: #F4F4F4;
+}
+
+.customer-care a:hover {
+  background-color:transparent;
+  color: white;   /* hover effect */
+}
+
+
+
+
+
+
+.about-nakhrali {
+  padding: 40px;
+  background: #fff;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-nakhrali h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8B575C; /* same theme red */
+  margin-bottom: 15px;
+}
+
+.about-nakhrali p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8B575C;  /* theme red */
+  padding: 20px;
+  gap: 20px;
+}
+
+.footer-social span {
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 5px;
+  border-radius: 6px;  /* square with rounded corners */
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  background: #fff;
+  color: #8B575C;
+  transform: scale(1.1);
+}
+
+
+/* 🔹 Dropdown hidden by default */
+.categories .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;         /* parent ke niche */
+  left: 0;
+  background: #fff;
+  width: 700px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+  z-index: 999;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+}
+
+/* 🔹 Jab NEW ARRIVALS pe hover ho tab dropdown show */
+.categories li.dropdown:hover .dropdown-menu {
+  display: flex;   /* flex sirf hover pe lagega */
+}
+
+/* Left side list */
+.categories .dropdown-menu .menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  width: 40%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.categories .dropdown-menu .menu-list h6 {
+  font-size: 13px;       /* thoda chhota but alag dikhe */
+  font-weight: 600;      /* medium-bold */
+  margin: 0 0 8px 0;     /* niche thoda gap links ke liye */
+  color: black;           /* dark color for visibility */
+  text-transform: uppercase;  /* sab headings caps me */
+  text-align: left;      /* left side se align */
+  letter-spacing: 0.3px; /* thoda space letters ke beech */
+}
+
+.categories .dropdown-menu .menu-list li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #8B575C;
+  font-size: 13px;
+  transition: background 0.2s;
+  text-align: left;
+  
+}
+
+.categories .dropdown-menu .menu-list li a:hover {
+  background: #f4f4f4;
+}
+
+/* Right side image */
+.categories .dropdown-menu .menu-image {
+  width: 90%;
+  height: auto;
+}
+
+.categories .dropdown-menu .menu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: 0;
+  display: block;
+}
+
+.categories .dropdown-menu .menu-list h4 {
+  font-size: 13px;       /* thoda chhota but alag dikhe */
+  font-weight: 600;      /* medium-bold */
+  margin: 0 0 8px 0;     /* niche thoda gap links ke liye */
+  color: black;           /* dark color for visibility */
+  text-transform: uppercase;  /* sab headings caps me */
+  text-align: left;      /* left side se align */
+  letter-spacing: 0.3px; /* thoda space letters ke beech */
+}
+
+
+/* Har li ko relative position do */
+.categories li {
+  position: relative;
+}
+
+/* Offers dropdown */
+.categories li.dropdown-offers .offers-menu {
+  display: none;
+  position: absolute;
+  top: 110%;       /* Offers ke just neeche */
+  left: 0;         /* Offers ke left edge se start */
+  background: #fff;
+  width: 180px;    /* 🔹 thoda bada kar diya */
+  padding: 15px 15px;
+  box-sizing: border-box;
+  z-index: 999;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Hover pe show */
+.categories li.dropdown-offers:hover .offers-menu {
+  display: block;
+}
+
+/* Links styling */
+.categories li.dropdown-offers .offers-menu li a {
+  display: inline-block;   /* text ke liye box banega */
+  padding: 8px 8px;
+  text-decoration: none;
+  color: #8B575C;
+  font-size: 14px;
+
+  min-width: 110px;  /* 🔹 sirf text box ki width badh gayi */
+  white-space: nowrap; /* line break nahi hoga */
+  transition: background 0.2s;
+  text-align: left;
+}
+
+
+.categories li.dropdown-offers .offers-menu li a:hover {
+  background: #f4f4f4;
+}
+
+
+
+
+
+
+
+
+/* Theme colors from your site */
+:root{
+  --primary:#cc1c2d;
+  --accent:#C98986;
+  --bg:#F4F4F4;
+  --text:#333;
+}
+
+body{ background: var(--bg); font-family: 'Playfair Display', serif; }
+
+/* Section */
+#saree-collection{
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+#saree-collection h2{
+  color: var(--primary);
+  font-size: 22px;
+  margin: 0 0 16px;
+  color: #8B575C;
+}
+
+/* Grid */
+.product-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 16px;
+}
+
+/* Card */
+.pro{
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+  width: 300px;   /* yahan badha/small kar sakte ho */
+  height: 450px;  /* poore card ki height fix kar do */
+}
+.pro:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+.pro img{
+  width: 100%;
+  height: 450px;           /* fixed visual height */
+  object-fit: cover;       /* crop neatly */
+  display: block;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Content */
+.des{
+  padding: 10px 12px 36px; /* space for cart button */
+}
+.des span{
+  display: block;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: .3px;
+  margin-bottom: 4px;
+}
+.des h5{
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Stars */
+.star{ font-size: 12px; color: #f0ad4e; margin-bottom: 8px; }
+
+/* Price */
+.des h4{
+  margin: 0;
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Cart button */
+.add-to-cart{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.add-to-cart:hover{ transform: scale(1.06); opacity: .95; }
+
+/* Responsive */
+@media (max-width: 1024px){
+  .product-container{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px){
+  .product-container{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px){
+  .product-container{ grid-template-columns: 1fr; }
+}
+
+
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 40px;
+}
+
+.detail-container img {
+  width: 400px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.detail-info {
+  max-width: 400px;
+  text-align: left;
+}
+
+.img-box {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0; left: 0;
+  transition: opacity 0.4s ease;
+}
+
+.img-front { opacity: 1; }
+.img-back  { opacity: 0; }
+
+.pro:hover .img-front { opacity: 0; }
+.pro:hover .img-back  { opacity: 1; }
+.product-icons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* icons ke beech space */
+  z-index: 10;  
+  /* text-decoration: none; */
+}
+.pro > a {
+  pointer-events: none;   /* ⭐ ADD THIS */
+}
+.wishlist-icon,
+.cart-icon {
+  pointer-events: auto;
+}
+
+/* Common style */
+.product-icons a {
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+/* Wishlist icon default (grey) */
+.wishlist-icon i {
+  font-size: 20px;
+  color: #8B575C;  /* default grey */
+  transition: color 0.1s ease-in-out;
+}
+
+/* Wishlist hover */
+.wishlist-icon:hover i {
+  color: #F4F4F4; /* wine shade on hover */
+  background-color: #8B575C;
+}
+
+/* Wishlist active (clicked) */
+.wishlist-icon.active i {
+  color: #8B575C; 
+  font-weight: bold;
+}
+
+/* Cart icon default */
+.cart-icon i {
+  font-size: 20px;
+  color: #8B575C;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Cart hover */
+.cart-icon:hover i {
+  color: #fff;
+}
+
+.cart-icon:hover {
+  background: #8B575C;
+}
+
+.wishlist-icon:hover {
+  background: #8B575C; /* keep background white on hover */
+    transition: color 0.1s ease-in-out;
+
+}
+
+
+
+/* ---------- Product Detail Page ---------- */
+
+body.detail-page{
+  background: #fdfdfd;
+  font-family:'Courier New', Courier, monospace;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.detail-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.detail-container img {
+  width: 420px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.detail-container img:hover {
+  transform: scale(1.05);
+}
+
+.detail-info {
+  flex: 1;
+  text-align: left;
+}
+
+.detail-info h2 {
+  margin: 0 0 15px;
+  font-size: 28px;
+  color: #8B575C; /* theme color */
+}
+
+.detail-info p {
+  font-size: 16px;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.detail-info strong {
+  color: #C98986;
+}
+
+.detail-info a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+  font-size: 14px;
+  background: #8B575C;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.detail-info a:hover {
+  background: #C98986;
+}
+/* Cart icon default */
+.cart-icon i {
+  color: #8B575C;
+  font-size: 20px;
+  transition: color 0.2s ease;
+}
+
+/* Hover */
+.cart-icon:hover {
+  background: #8B575C;
+}
+.cart-icon:hover i {
+  color: #fff;
+}
+
+/* Active = cart me added */
+.cart-icon.active i {
+  color: #8B575C;
+  font-weight: bold;
+}
+.cart-nav {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #8B575C;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: none; /* default hidden */
+}

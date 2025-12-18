@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ product.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sarees.css') }}">
+</head>
+<body class="detail-page">
+  <div class="detail-container">
+    <img src="{{ url_for('static', filename=product.image1) }}" alt="{{ product.name }}">
+    <div class="detail-info">
+      <h2>{{ product.name }}</h2>
+      <p><strong>Brand:</strong> {{ product.brand }}</p>
+      <p><strong>Price:</strong> ₹ {{ product.price }}</p>
+      <p><strong>Rating:</strong> {{ product.rating }} ★</p>
+      <a href="/home/sarees">⬅ Back to Sarees</a>
+    </div>
+  </div>
+</body>
+</html>

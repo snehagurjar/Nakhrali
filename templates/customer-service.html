@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Service</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/customer_service.css') }}">
+  <!-- Bootstrap Icons (for Insta, WhatsApp etc.) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+  <header class="cs-header">
+    <div class="cs-header">
+  <!-- <h1>Customer Service</h1> -->
+  <a href="{{ url_for('home') }}" class="back-home">← Back to Home</a>
+</div>
+
+    <!-- <h1>Customer Service</h1> -->
+    <p class="animated-text">We are here to help you anytime!</p>
+  </header>
+
+  <main class="cs-container">
+
+    <!-- Contact Us -->
+    <section class="cs-section" id="contact">
+  <h2>📞 Contact Us</h2>
+
+  <!-- Instagram -->
+  <p>
+    <i class="bi bi-instagram"></i> 
+    Instagram: <a href="https://instagram.com/nakhrali_._collection" target="_blank">@nakhrali_._collection</a>
+  </p>
+
+  <!-- WhatsApp -->
+  <p>
+    <i class="bi bi-whatsapp"></i> 
+    WhatsApp: <a href="https://wa.me/917354084124" target="_blank">+91 73540 84124</a>
+  </p>
+
+  <!-- Phone -->
+  <p>
+    <i class="bi bi-telephone"></i> 
+    Phone: +91 73540 84124
+  </p>
+
+  <!-- Email -->
+  <p>
+    <i class="bi bi-envelope"></i> 
+    Email: <a href="mailto:09snehagurjar@gmail.com">09snehagurjar@gmail.com</a>
+  </p>
+</section>
+
+
+    <!-- Return & Exchange Policy -->
+    <section class="cs-section" id="return">
+      <h2>↩️ Return & Exchange Policy</h2>
+      <p>You may request a return or exchange within <b>7 days</b> of receiving your order. Items must be unused, unworn, and with all original tags intact.</p>
+    </section>
+
+    <!-- Cancellation Policy -->
+    <section class="cs-section" id="cancel">
+      <h2>❌ Cancellation Policy</h2>
+      <p>Orders can be cancelled within <b>24 hours</b> of placement. Once shipped, cancellation is not possible.</p>
+    </section>
+
+    <!-- FAQs -->
+    <section class="cs-section" id="faq">
+      <h2>❓ FAQs</h2>
+      <ul>
+        <li><b>Q:</b> How can I track my order?<br><b>A:</b> You can track your order with the help of chatbot</li>
+        <li><b>Q:</b> Do you ship internationally?<br><b>A:</b> Yes, additional charges apply.</li>
+        <li><b>Q:</b> How long does delivery take?<br><b>A:</b> Usually 5–7 business days within India.</li>
+      </ul>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section class="cs-section" id="privacy">
+      <h2>🔒 Privacy Policy</h2>
+      <p>Your personal data is secure with us and will never be shared without consent. We only use your details for order fulfillment.</p>
+    </section>
+
+    <!-- Terms & Conditions -->
+    <section class="cs-section" id="terms">
+      <h2>📜 Terms & Conditions</h2>
+      <p>By shopping on our website, you agree to our terms regarding payments, returns, cancellations, and privacy practices.</p>
+    </section>
+
+    <!-- Refund Policy -->
+    <section class="cs-section" id="refund">
+      <h2>💰 Refund Policy</h2>
+      <p>Refunds are processed within <b>7-10 working days</b> after the returned product is received and inspected.</p>
+    </section>
+
+  </main>
+
+  <footer class="cs-footer">
+    <p>© 2025 Nakhrali. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

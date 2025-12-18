@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register - Nakhrali</title>
+<style>
+    body {
+    background: linear-gradient(to right, #ffe4e1, #ffc0cb);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .form-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 350px;
+    }
+
+    .form-box h2 {
+    margin-bottom: 25px;
+    color: rgb(87, 9, 9);
+    text-align: center;
+    }
+
+    .form-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+
+    .form-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(87, 9, 9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    }
+
+    .form-box button:hover {
+    background-color: #a43470;
+    }
+
+    .form-box .link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    }
+
+    .form-box .link a {
+    color: rgb(87, 9, 9);
+    text-decoration: none;
+    }
+
+    .form-box .link a:hover {
+    text-decoration: underline;
+    }
+
+    #pwd-message {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="form-box">
+    <h2>Create Account</h2>
+    <form action="/register" method="POST">
+        {% if error %}
+        <p style="color:red; text-align:center; margin-bottom:10px;">{{ error }}</p>
+        {% endif %}
+
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+        <input type="text" name="location" placeholder="Location" required />
+    
+        <input type="date" name="dob" required>
+        <input type="password" id="password" name="password" placeholder="Password" onkeyup="checkPasswords()" required />
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" onkeyup="checkPasswords()" required />
+        <p id="pwd-message"></p>
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="submit">Register</button>
+
+        <div class="link">
+            Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+        </div>
+    </form>
+</div>
+
+<!-- ✅ Password match checking script -->
+<script>
+    function checkPasswords() {
+        const pwd = document.getElementById("password").value;
+        const cpwd = document.getElementById("confirm_password").value;
+        const msg = document.getElementById("pwd-message");
+
+        if (!pwd || !cpwd) {
+            msg.textContent = "";
+            return;
+        }
+
+        if (pwd !== cpwd) {
+            msg.textContent = "❌ Passwords do not match.";
+            msg.style.color = "red";
+        } else {
+            msg.textContent = "✅ Passwords match.";
+            msg.style.color = "green";
+        }
+    }
+</script>
+</body>
+</html>

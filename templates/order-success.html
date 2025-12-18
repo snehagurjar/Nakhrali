@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Success | Nakhrali</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sarees.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wishlist.css') }}">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    .success-box {
+      max-width: 600px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      color: #7a3f3f;
+      margin-bottom: 20px;
+    }
+
+    .success-box h2 {
+      color: #7a3f3f;
+      margin-bottom: 10px;
+    }
+
+    .order-info {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .order-info p {
+      margin: 6px 0;
+    }
+
+    .success-btn {
+      margin-top: 25px;
+      background: #7a3f3f;
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      display: inline-block;
+    }
+
+    .success-btn:hover {
+      background: #643232;
+    }
+  </style>
+</head>
+
+<body>
+
+<section id="wishlist-collection">
+  <div class="success-box">
+    <div class="success-icon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+
+    <h2>Order Placed Successfully 🎉</h2>
+    <p>Thank you for shopping with Nakhrali</p>
+
+    <div class="order-info">
+      <p><b>Order ID:</b> <span id="order-id"></span></p>
+      <p><b>Total Paid:</b> ₹<span id="order-total"></span></p>
+      <p><b>Payment Method:</b> <span id="order-payment"></span></p>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="success-btn">
+      Continue Shopping
+    </a>
+  </div>
+</section>
+<script>
+const order = JSON.parse(localStorage.getItem("lastOrder"));
+
+// ❌ Redirect hata diya
+if (!order) {
+  console.warn("No lastOrder found in localStorage");
+
+  document.getElementById("order-id").innerText = "—";
+  document.getElementById("order-total").innerText = "—";
+  document.getElementById("order-payment").innerText = "Cash on Delivery";
+} else {
+  // show values
+  document.getElementById("order-id").innerText = order.orderId || "—";
+  document.getElementById("order-total").innerText = order.total || "—";
+
+  document.getElementById("order-payment").innerText =
+    order.paymentMethod === "cod" ||
+    order.paymentMethod === "COD" ||
+    order.paymentMethod === "Cash on Delivery"
+      ? "Cash on Delivery"
+      : order.paymentMethod;
+
+  // optional cleanup
+  localStorage.removeItem("lastOrder");
+}
+</script>
+
+</body>
+</html>

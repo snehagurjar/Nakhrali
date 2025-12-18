@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Nakhrali</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_profile.css') }}">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2 class="logo">Nakhrali</h2>
+        <ul>
+            <li>
+                <a href="{{ url_for('profile', section='profile') }}"
+                   class="{{ 'active' if section=='profile' else '' }}">
+                   My Profile
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('profile', section='address') }}"
+                   class="{{ 'active' if section=='address' else '' }}">
+                   My Delivery Address
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('profile', section='orders') }}"
+                   class="{{ 'active' if section=='orders' else '' }}">
+                   My Orders
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('profile', section='change-password') }}"
+                   class="{{ 'active' if section=='change-password' else '' }}">
+                   Change Password
+                </a>
+            </li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a href="{{ url_for('home') }}">← Back to Home</a></li>
+        </ul>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- PROFILE INFO -->
+        {% if section == "profile" %}
+        <div class="profile-header">
+            <div class="profile-avatar">
+                {% if user.gender == "Male" %}
+                    <img src="{{ url_for('static', filename='images/male.png') }}">
+                {% elif user.gender == "Female" %}
+                    <img src="{{ url_for('static', filename='images/female.png') }}">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/default.png') }}">
+                {% endif %}
+            </div>
+
+            <div class="profile-info">
+                <div class="info-card"><span class="label">Name</span><span class="value">{{ user.name }}</span></div>
+                <div class="info-card"><span class="label">Email</span><span class="value">{{ user.email }}</span></div>
+                <div class="info-card"><span class="label">Phone</span><span class="value">{{ user.phone }}</span></div>
+                <div class="info-card"><span class="label">DOB</span><span class="value">{{ user.dob or "Not set" }}</span></div>
+                <div class="info-card"><span class="label">Gender</span><span class="value">{{ user.gender or "Not set" }}</span></div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ADDRESSES -->
+        {% if section == "address" %}
+        <h2>My Delivery Addresses</h2>
+
+        {% if user.addresses %}
+        <div class="address-container">
+            {% for addr in user.addresses %}
+            <div class="address-card">
+                <p>
+                    <strong>Address:</strong> {{ addr.address }}<br>
+                    <strong>City:</strong> {{ addr.city }}<br>
+                    <strong>State:</strong> {{ addr.state }}<br>
+                    <strong>Pincode:</strong> {{ addr.pincode }}
+                </p>
+                <a href="{{ url_for('delete_address', address_id=addr.id) }}"
+                   class="delete-btn"
+                   onclick="return confirm('Delete this address?')">
+                   Delete
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>No delivery addresses saved.</p>
+        {% endif %}
+
+        <h3>Add New Address</h3>
+        <form method="POST" action="{{ url_for('add_address') }}">
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="text" name="city" placeholder="City" required>
+            <input type="text" name="state" placeholder="State" required>
+            <input type="text" name="pincode" placeholder="Pincode" required>
+            <button type="submit">Save Address</button>
+        </form>
+        {% endif %}
+{% if section == "orders" %}
+<h2>My Orders</h2>
+{% if orders %}
+  <div class="orders-list">
+    {% for order in orders %}
+      <div class="order-card">
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>Total:</strong> ₹{{ order.total_amount }}</p>
+        <p><strong>Payment:</strong> {{ order.payment_method }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <small>{{ order.created_at.strftime('%d %b %Y') }}</small>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No orders found.</p>
+{% endif %}
+{% endif %}
+
+
+        <!-- CHANGE PASSWORD -->
+        {% if section == "change-password" %}
+        <h2>Change Password</h2>
+        <form method="POST" action="{{ url_for('profile', section='change-password') }}">
+            <label>Current Password</label>
+            <input type="password" name="current_password" required>
+
+            <label>New Password</label>
+            <input type="password" name="new_password" required>
+
+            <label>Confirm New Password</label>
+            <input type="password" name="confirm_password" required>
+
+            <button type="submit">Update Password</button>
+        </form>
+        {% endif %}
+
+    </div>
+</div>
+
+</body>
+</html>

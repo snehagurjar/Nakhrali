@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cart | Nakhrali</title>
+
+  <!-- SAME CSS AS WISHLIST -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sarees.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wishlist.css') }}">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<section id="wishlist-collection">
+  <div class="wishlist-header">
+    <h2><i class="fa-solid fa-cart-shopping"></i> My Cart</h2>
+  </div>
+
+  <div class="product-container" id="cart-container"></div>
+
+  <!-- 🔻 GRAND TOTAL -->
+  <!-- <div id="cart-total" style="text-align:right; font-size:18px; font-weight:bold; margin:20px;">
+    Total: ₹0
+  </div> -->
+  <!-- 🔻 Cart Summary -->
+<div class="cart-summary">
+  <div class="summary-row">
+    <span>Subtotal</span>
+    <span id="cart-subtotal">₹0</span>
+  </div>
+
+  <div class="summary-row">
+    <span>Delivery</span>
+    <span id="cart-delivery">FREE</span>
+  </div>
+
+  <hr>
+
+  <div class="summary-row total">
+    <span>Total</span>
+    <span id="cart-total">₹0</span>
+  </div>
+
+  <a href="{{ url_for('checkout') }}">
+  <button class="checkout-btn">Proceed to Checkout</button>
+</a>
+
+</div>
+
+
+</section>
+
+<script>
+/* ---------- CART DATA ---------- */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const container = document.getElementById("cart-container");
+// const totalBox = document.getElementById("cart-total");
+
+/* ---------- RENDER CART ---------- */
+function renderCart() {
+  cart = JSON.parse(localStorage.getItem("cart")) || []; // 🔥 IMPORTANT FIX
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Your cart is empty.</p>";
+    updateCartSummary();
+    return;
+  }
+
+  cart.forEach(item => {
+    let itemTotal = item.price * item.quantity;
+
+    container.innerHTML += `
+      <div class="pro">
+        <div class="img-box">
+          <img src="${item.image}" class="img-front">
+        </div>
+
+        <div class="des">
+          <h5>${item.name}</h5>
+          <h4>₹${item.price}</h4>
+
+          <div class="qty-box">
+            <button onclick="decreaseQty('${item.id}')">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="increaseQty('${item.id}')">+</button>
+          </div>
+
+          <h4>Item Total: ₹${itemTotal}</h4>
+        </div>
+
+        <div class="product-icons">
+          <a href="javascript:void(0)"
+             class="cart-icon active"
+             onclick="removeItem('${item.id}')">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      </div>
+    `;
+  });
+
+  updateCartSummary();
+}
+
+/* ---------- ACTIONS ---------- */
+function increaseQty(id) {
+  cart.forEach(item => {
+    if (String(item.id) === String(id)) {
+      item.quantity += 1;
+    }
+  });
+  saveCart();
+}
+
+function decreaseQty(id) {
+  cart = cart
+    .map(item => {
+      if (String(item.id) === String(id)) {
+        item.quantity -= 1;
+      }
+      return item;
+    })
+    .filter(item => item.quantity > 0);
+
+  saveCart();
+}
+
+function removeItem(id) {
+  cart = cart.filter(item => String(item.id) !== String(id));
+  saveCart();
+}
+
+/* ---------- SAVE ---------- */
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.dispatchEvent(new Event("cartUpdated")); // 🔔 for navbar badge
+  renderCart();
+//   updateCartSummary();
+
+}
+
+/* ---------- INIT ---------- */
+renderCart();
+updateCartSummary();
+function updateCartSummary() {
+  let subtotal = 0;
+
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+  });
+
+  let delivery = cart.length > 0 ? 40 : 0;
+  let total = subtotal + delivery;
+
+  document.getElementById("cart-subtotal").innerText = "₹" + subtotal;
+  document.getElementById("cart-delivery").innerText =
+    delivery === 0 ? "FREE" : "₹" + delivery;
+
+  document.getElementById("cart-total").innerText = "₹" + total;
+}
+
+
+renderCart();
+updateCartSummary();
+
+</script>
+
+</body>
+</html>

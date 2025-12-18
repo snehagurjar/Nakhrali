@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nakhrali</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body, html {
+        height: 100%;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+        background: url('/static/images/background.jpg') no-repeat center center / cover;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgb(87, 9, 9);
+        text-shadow: 2px 2px 5px #a37474;
+        position: relative;
+    }
+    h1 {
+        font-size: 6rem;
+        font-weight: bold;
+        font-family: 'Great Vibes', cursive;
+        margin-bottom: 40px;
+        position: absolute;
+        top: 200px;
+        left: 180px;
+        text-shadow: 3px 3px 8px rgba(163, 116, 116, 0.8);
+        letter-spacing: 2px;
+    }
+    .start-button {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        font-family: 'Great Vibes', cursive;
+        background-color: rgba(237, 234, 234, 0.9);
+        border: none;
+        border-radius: 500px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+        transition: 0.3s;
+    }
+    .start-button:hover {
+        background-color: rgb(87, 9, 9);
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div class="hero" style="background: url('/static/images/background.jpg') no-repeat center center / cover;">
+    <h1>NAKHRALI</h1>
+<a href="{{ url_for('auth') }}" class="start-button">Explore Elegance🎔</a>
+</div>
+
+</body>
+</html>
