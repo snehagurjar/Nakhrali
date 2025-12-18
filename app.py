@@ -26,7 +26,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-
+with app.app_context():
+    db.create_all()
 
 # admin = Admin(app, name="Nakhrali Admin", template_mode="bootstrap4")
 admin = Admin(app, name="Nakhrali Admin")
